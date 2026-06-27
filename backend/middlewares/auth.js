@@ -69,7 +69,7 @@ exports.isStudent = async (req, res, next) => {
 
 
 // isInsturctor middleware
-exports.isInsturctor = async (req, res, next) => {
+exports.isInstructor = async (req, res, next) => {
     try {
 
         if (req.user.accountType !== "Insturctor") {
