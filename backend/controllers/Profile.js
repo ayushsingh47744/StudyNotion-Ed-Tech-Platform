@@ -202,7 +202,10 @@ exports.getEnrolledCourses = async (req, res) => {
 
 exports.updateDisplayPicture = async (req, res) => {
     try {
+        console.log("FILES:", req.files)
+        console.log("USER:", req.user)
         const displayPicture = req.files.displayPicture
+        console.log("TEMP PATH:", displayPicture.tempFilePath)
         const userId = req.user.id
         const image = await uploadImageToCloudinary(
             displayPicture,
@@ -222,6 +225,8 @@ exports.updateDisplayPicture = async (req, res) => {
             data: updatedProfile,
         })
     } catch (error) {
+        console.log("ERROR:", error.message)
+        console.log("FULL ERROR:", error)
         return res.status(500).json({
             success: false,
             message: error.message,

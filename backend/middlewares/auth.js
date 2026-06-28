@@ -72,7 +72,7 @@ exports.isStudent = async (req, res, next) => {
 exports.isInstructor = async (req, res, next) => {
     try {
 
-        if (req.user.accountType !== "Insturctor") {
+        if (req.user.accountType !== "Instructor") {
             return res.status(401).json({
                 success: false,
                 message: "This is a protected route for Insturctor only",
