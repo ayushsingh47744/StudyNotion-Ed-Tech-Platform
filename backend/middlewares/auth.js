@@ -6,11 +6,12 @@ const User = require("../models/User");
 // auth middleware 
 exports.auth = async (req, res, next) => {
     try {
-
+        console.log("AUTH HEADER:", req.header("Authorization"));
+        console.log("COOKIES:", req.cookies);
         // extract token
         const token =
             req.cookies.token ||
-            req.body.token ||
+            req.body?.token ||
             req.header("Authorization")?.replace("Bearer ", "");  // ?. prevents an error if the Authorization header is missing
 
         // if token is missing, then return response
@@ -30,12 +31,12 @@ exports.auth = async (req, res, next) => {
 
         } 
         catch (err) {
-            // verification isssue
-            return res.status(401).json({
-                success: false,
-                message: "Token is invalid",
-            });
-        }
+    console.log("JWT VERIFY ERROR:", err.message);
+    return res.status(401).json({
+        success: false,
+        message: "Token is invalid",
+    });
+}
         next();
     } 
     catch (error) {

@@ -2,7 +2,6 @@ const SubSection = require("../models/SubSection");
 const Section = require("../models/Section");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 
-
 // create SubSection handler function
 exports.createSubSection = async (req, res) => {
     try {
@@ -14,7 +13,7 @@ exports.createSubSection = async (req, res) => {
         const video = req.files.videoFile;
 
         // validation
-        if (!sectionId || !title || !timeDuration || !description || !video) {
+        if (!sectionId || !title  || !description || !video) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required",
@@ -27,7 +26,7 @@ exports.createSubSection = async (req, res) => {
         // create subsection
         const subSectionDetails = await SubSection.create({
             title: title,
-            timeDuration: timeDuration,
+            timeDuration: timeDuration ? parseInt(timeDuration) : 0,
             description: description,
             videoUrl: uploadDetails.secure_url,
         });
@@ -57,7 +56,8 @@ exports.createSubSection = async (req, res) => {
             error: error.message,
         });
     }
-};
+};;
+
 
 
 // updateSubSection handler function
@@ -81,13 +81,14 @@ exports.updateSubSection = async (req, res) => {
         }
 
         // update data
+        const updateData = { title, description };
+        if (timeDuration !== undefined) {
+            updateData.timeDuration = parseInt(timeDuration) || 0;
+        }
+
         const subSection = await SubSection.findByIdAndUpdate(
             subSectionId,
-            {
-                title,
-                description,
-                timeDuration,
-            },
+            updateData,
             { new: true }
         );
 
@@ -95,7 +96,7 @@ exports.updateSubSection = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: "SubSection Updated Successfully",
-            data: subSection,    // this one from myside.........................
+            data: subSection,
         });
 
     } catch (error) {
