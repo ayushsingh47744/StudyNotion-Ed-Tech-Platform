@@ -22,7 +22,7 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://studynotion-ed-tech-platform-five.vercel.app/",
+  origin: "https://studynotion-ed-tech-platform-five.vercel.app",
   credentials: true,
 }));
 
