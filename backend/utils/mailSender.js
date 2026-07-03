@@ -1,16 +1,23 @@
-const { Resend } = require("resend");
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+const SibApiV3Sdk = require('@getbrevo/brevo');
 
 const mailSender = async (email, title, body) => {
     try {
-        const info = await resend.emails.send({
-            from: "StudyNotion <onboarding@resend.dev>", // testing ke liye ye default domain use hota hai
-            to: email,
-            subject: title,
-            html: body,
-        });
+        let apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+        apiInstance.setApiKey(
+            SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey,
+            process.env.BREVO_API_KEY
+        );
 
+        let sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+        sendSmtpEmail.subject = title;
+        sendSmtpEmail.htmlContent = body;
+        sendSmtpEmail.sender = {
+            name: "StudyNotion",
+            email: "ayuuthakur85@gmail.com",
+        };
+        sendSmtpEmail.to = [{ email: email }];
+
+        const info = await apiInstance.sendTransacEmail(sendSmtpEmail);
         console.log("Email sent successfully:", info);
         return info;
     }

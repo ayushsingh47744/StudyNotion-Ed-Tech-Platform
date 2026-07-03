@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@getbrevo/brevo": "^6.0.2",
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.10.0",
     "cookie-parser": "^1.4.7",
@@ -28,7 +29,6 @@
     "nodemailer": "^9.0.1",
     "nodemon": "^3.1.14",
     "otp-generator": "^4.0.1",
-    "razorpay": "^2.9.6",
-    "resend": "^6.17.1"
+    "razorpay": "^2.9.6"
   }
 }
