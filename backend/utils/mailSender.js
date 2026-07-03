@@ -1,8 +1,4 @@
 const nodemailer = require("nodemailer");
-const dns = require("dns");
-
-// Force IPv4 DNS resolution to avoid ENETUNREACH errors on Render
-dns.setDefaultResultOrder('ipv4first');
 
 const mailSender = async (email, title, body) => {
     try {
@@ -10,6 +6,7 @@ const mailSender = async (email, title, body) => {
             host: process.env.MAIL_HOST,
             port: 587,
             secure: false,
+            family: 4,  // Force IPv4
             auth: {
                 user: process.env.MAIL_USER,
                 pass: process.env.MAIL_PASS,
