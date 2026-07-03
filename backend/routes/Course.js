@@ -14,7 +14,7 @@ const {showAllCategories,createCategory,categoryPageDetails,} = require("../cont
 const {createSection,updateSection,deleteSection,} = require("../controllers/Section")
 
 // Sub-Sections Controllers Import
-const {createSubSection,updateSubSection,deleteSubSection,} = require("../controllers/Subsection")
+const {createSubSection,updateSubSection,deleteSubSection,} = require("../controllers/SubSection")
 
 // Rating Controllers Import
 const {createRating,getAverageRating,getAllRating,getAllRatingReview,} = require("../controllers/RatingAndReview")
