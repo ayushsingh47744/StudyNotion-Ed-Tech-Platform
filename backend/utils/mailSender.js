@@ -3,15 +3,15 @@ const nodemailer = require("nodemailer");
 const mailSender = async (email, title, body) => {
     try {
         let transporter = nodemailer.createTransport({
-            host: process.env.MAIL_HOST,
-            port: 587,
-            secure: false,
-            family: 4,  // Force IPv4
-            auth: {
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASS,
-            },
-        });
+    host: process.env.MAIL_HOST,
+    port: 465,
+    secure: true,  // true for port 465
+    family: 4,
+    auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
+    },
+});
 
         let info = await transporter.sendMail({
             from: 'StudyNotion - by Palak',
