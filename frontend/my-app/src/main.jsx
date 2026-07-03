@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import rootReducer from "./reducer";
 import {configureStore} from "@reduxjs/toolkit"
 import { Toaster } from "react-hot-toast";
-import './output.css'  // add karo
+import './index.css'  // add karo
 
 
 
