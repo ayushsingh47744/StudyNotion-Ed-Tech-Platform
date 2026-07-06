@@ -135,7 +135,7 @@ function Home() {
       </div>
 
       {/* Section 2 */}
-      <div className="relative z-0 -mt-32 bg-gradient-to-b from-[#02040a] via-[#0b1d3a] to-[#02040a] text-richblack-5">
+      <div className="relative z-0 -mt-16 lg:-mt-32 bg-gradient-to-b from-[#02040a] via-[#0b1d3a] to-[#02040a] text-richblack-5">
         <div className="homepage_bg relative h-[320px] overflow-hidden">
           {/* Top fade overlay - blends pattern into the section above */}
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-richblack-900/60 to-transparent" />
@@ -162,7 +162,7 @@ function Home() {
 
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 ">
           {/* Job that is in Demand - Section 1 */}
-          <div className="mb-10 mt-[-100px] flex flex-col justify-between gap-7 lg:mt-20 lg:flex-row lg:gap-0">
+          <div className="mb-10 mt-8 flex flex-col justify-between gap-7 lg:mt-20 lg:flex-row lg:gap-0">
             <div className="text-4xl font-semibold text-richblack-5 lg:w-[45%] ">
               Get the skills you need for a{" "}
               <HighlightText text={"job that is in demand."} />
