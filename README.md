@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://study-notion-ed-tech-platform-six.vercel.app/">
+  <a href="https://studynotion-ed-tech-platform-five.vercel.app/">
     <img src="https://img.shields.io/badge/Live%20Demo-Visit%20App-success?style=for-the-badge" alt="Live Demo"/>
   </a>
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React"/>
@@ -13,14 +13,6 @@
   <img src="https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express"/>
   <img src="https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB"/>
 </p>
-
----
-
-## 🌐 Live Demo
-
-🚀 **[Open StudyNotion](https://study-notion-ed-tech-platform-six.vercel.app/)**
-
-> The application is deployed as a full-stack web application with a React frontend and Node.js/Express backend.
 
 ---
 
