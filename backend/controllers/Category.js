@@ -8,21 +8,17 @@ function getRandomInt(max) {
 exports.createCategory = async (req, res) => {
     try {
         const { name, description } = req.body;
-
         if (!name || !description) {
             return res.status(400).json({
                 success: false,
                 message: "All fields are required",
             });
         }
-
         const categoryDetails = await Category.create({
             name: name,
             description: description,
         });
-
         console.log(categoryDetails);
-
         return res.status(200).json({
             success: true,
             message: "Category Created Successfully",
@@ -41,9 +37,13 @@ exports.createCategory = async (req, res) => {
 exports.showAllCategories = async (req, res) => {
     try {
         const allCategory = await Category.find({})
-            .populate("courses")
+            .populate({
+                path: "courses",
+                populate: {
+                    path: "ratingAndReviews",
+                },
+            })
             .exec();
-
         return res.status(200).json({
             success: true,
             message: "All categories returned successfully",
@@ -57,12 +57,18 @@ exports.showAllCategories = async (req, res) => {
         });
     }
 };
+
 exports.categoryPageDetails = async (req, res) => {
     try {
         const { categoryId } = req.body;
 
         const selectedCategory = await Category.findById(categoryId)
-            .populate("courses")
+            .populate({
+                path: "courses",
+                populate: {
+                    path: "ratingAndReviews",
+                },
+            })
             .exec();
 
         if (!selectedCategory) {
@@ -75,8 +81,13 @@ exports.categoryPageDetails = async (req, res) => {
         const differentCategories = await Category.find({
             _id: { $ne: categoryId },
         })
-        .populate("courses")
-        .exec();
+            .populate({
+                path: "courses",
+                populate: {
+                    path: "ratingAndReviews",
+                },
+            })
+            .exec();
 
         return res.status(200).json({
             success: true,
@@ -85,7 +96,6 @@ exports.categoryPageDetails = async (req, res) => {
                 differentCategories,
             },
         });
-
     } catch (error) {
         console.log(error);
         return res.status(500).json({
